@@ -52,10 +52,10 @@ public class QuestionPaperViewController {
 
     @javafx.fxml.FXML
     public void initialize() {
-        courseidComboBox.getItems().addAll("CSE213", "CSE315", "CSE310", "MAT203");
+        courseidComboBox.getItems().addAll("CSE213", "CSE315", "CSE310", "MAT203","CSE425","CSE442","CSE101","MAT212","CSE201","MAT301","CSE317","CSE426");
         semesterComboBox.getItems().addAll("Spring", "Summer", "Autumn");
         qpTypeComboBox.getItems().addAll("Quiz", "Mid", "final");
-        FilterCourseidComboBox.getItems().addAll("CSE213", "CSE315", "CSE310", "MAT203");
+        FilterCourseidComboBox.getItems().addAll("CSE213", "CSE315", "CSE310", "MAT203","CSE425","CSE442","CSE101","MAT212","CSE201","MAT301","CSE317","CSE426");
         FilterQpTypeCombobox.getItems().addAll("Quiz", "Mid", "final");
         courseidTableColumn.setCellValueFactory(new PropertyValueFactory<>("courseId"));
         examTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("qpType"));
