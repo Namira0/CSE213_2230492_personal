@@ -114,17 +114,35 @@ public class QuestionPaperViewController {
         );
         questionpaperList.add(qp);
     }
-
     @javafx.fxml.FXML
     public void ProcessTableButtonOA(ActionEvent actionEvent) {
+        QuestionPaperTableView.getItems().clear();
+
+        for (QuestionPaper qp : questionpaperList) {
+            if (ToBeConductedQPTF.isSelected()) {
+                // only papers not yet conducted (exam date today or later)
+                if (!qp.getExamdate().isBefore(LocalDate.now())) {
+                    QuestionPaperTableView.getItems().add(qp);
+                }
+            } else {
+                QuestionPaperTableView.getItems().add(qp);
+            }
+        }
+
+        ShowQpcountTF.setText("Count: " + QuestionPaperTableView.getItems().size());
     }
 
     @javafx.fxml.FXML
     public void filterandloadtableButtonOA(ActionEvent actionEvent) {
+        QuestionPaperTableView.getItems().clear();
         for (QuestionPaper qp : questionpaperList) {
-            if (FilterCourseidComboBox.getValue().equals(qp.getCourseId()) &&
+            if (FilterCourseidComboBox.getValue() != null &&
+                    FilterQpTypeCombobox.getValue() != null &&
+                    FilterCourseidComboBox.getValue().equals(qp.getCourseId()) &&
                     FilterQpTypeCombobox.getValue().equals(qp.getQpType())) {
+                QuestionPaperTableView.getItems().add(qp);
             }
         }
+        ShowQpcountTF.setText("Count: " + QuestionPaperTableView.getItems().size());
     }
 }
